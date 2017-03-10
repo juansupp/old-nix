@@ -1,0 +1,123 @@
+<br>
+<span class="fs-headline display-block">Clientes</span>
+<span class="fs-body-2 display-block">Presiona doble click en la fila que quieras actualizar</span>
+<table dt-instance="dtInstance" datatable=""  dt-options="dtOptionsCustomers" dt-columns="dtColumnsCustomers" class="row-border hover">
+   <tfoot>
+     <tr>
+       <th></th>
+       <th></th>
+       <th></th>
+       <th></th>
+     </tr>
+   </tfoot>
+</table>
+<br>
+<br>
+<span class="fs-headline display-block">Contactos</span>
+<span class="fs-body-2 display-block">Presiona doble click en la fila que quieras actualizar</span>
+<table  datatable=""  dt-instance="dtInstance2" dt-options="dtOptionsContacts" dt-columns="dtColumnsContacts" class="row-border hover">
+   <tfoot>
+     <tr>
+       <th></th>
+       <th></th>
+       <th></th>
+       <th></th>
+       <th></th>
+     </tr>
+   </tfoot>
+</table>
+<br>
+<br>
+<span class="fs-headline display-block">Areas</span>
+<table  datatable=""  dt-options="dtOptionsArea" dt-columns="dtColumnsArea" class="row-border hover">
+   <tfoot>
+     <tr>
+       <th></th>
+       <th></th>
+     </tr>
+   </tfoot>
+</table>
+
+
+<!-- EDICI{ON} -->
+<!-- Ediccion cliente-->
+<lx-dialog class="dialog dialog--l" id="dial" auto-close="true" >
+    <div class="dialog__header">
+        <div class="toolbar bgc-light-blue-500 pl++">
+            <span class="toolbar__label tc-white fs-title">
+                Editar {{QC.cliente.cliente}}
+            </span>
+            <div class="toolbar__right">
+                <button class="btn btn--l btn--white btn--icon" lx-tooltip="Guardar" lx-ripple ng-click="guardar(QC.edit)">
+                    <i class="mdi mdi-content-save"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="dialog__content p++">
+      <!--CLIENTE -->
+      <div ng-show="QC.edit === 'Cliente' ">
+        <div flex-container="row">
+            <div flex-item>
+                <lx-text-field label="Cliente" >
+                    <input type="text" ng-model="QC.cliente.nombre" >
+                </lx-text-field>
+            </div>
+            <div flex-item>
+                <lx-text-field label="NIT" >
+                    <input type="text" ng-model="QC.cliente.NIT" >
+                </lx-text-field>
+            </div>
+        </div>
+        <div flex-container="row">
+            <div flex-item>
+                <lx-text-field label="Sede" >
+                    <input type="text" ng-model="QC.cliente.nombre_sede"  >
+                </lx-text-field>
+            </div>
+            <div flex-item>
+                <lx-text-field label="Dirección" >
+                    <input type="text" ng-model="QC.cliente.direccion" >
+                </lx-text-field>
+            </div>
+            <div flex-item>
+                <lx-text-field label="Telefono" >
+                    <input type="text" ng-model="QC.cliente.telefono" >
+                </lx-text-field>
+            </div>
+        </div>
+      </div>
+      <!-- CONTACTO -->
+      <div ng-show="QC.edit === 'Contacto' ">
+        <div flex-container="row">
+            <div flex-item>
+                <lx-text-field label="Contacto" >
+                    <input type="text" ng-model="QC.contacto.nombre_contacto" >
+                </lx-text-field>
+            </div>
+            <div flex-item>
+                <lx-text-field label="Correo" >
+                    <input type="text" ng-model="QC.contacto.correo" >
+                </lx-text-field>
+            </div>
+            <div flex-item>
+                <lx-text-field label="Usuario" >
+                    <input type="text" ng-model="QC.contacto.usuario" >
+                </lx-text-field>
+            </div>
+        </div>
+        <div flex-container="row">
+            <div flex-item>
+                <lx-text-field label="Contraseña" >
+                    <input type="password" ng-model="QC.contacto.contrasena" >
+                </lx-text-field>
+            </div>
+            <div flex-item>
+                <lx-text-field label="Contraseña de nuevo " >
+                    <input type="password" ng-model="QC.contacto.contrasena2" >
+                </lx-text-field>
+            </div>
+        </div>
+      </div>
+    </div>
+</lx-dialog>

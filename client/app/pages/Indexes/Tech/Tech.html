@@ -1,0 +1,153 @@
+<div layout="row" layout-wrap>
+  <!-- -->
+  <!-- -->
+  <div flex>
+    <md-card class="purple" layout-wrap>
+      <md-content layout="row" layout-align="space-between center" layout-padding layout-wrap>
+        <div class="layout-column flex p++">
+          <h3 class="md-subhead">Cerrados total</h3>
+          <!-- <p class="md-body-1">Ver detalles</p>-->
+        </div>
+        <div class="p++">
+          <h1>{{tCerrados.todo}}</h1>
+          <!-- -->
+        </div>
+      </md-content>
+    </md-card>
+  </div>
+  <!-- -->
+  <div flex>
+    <md-card class="blue">
+      <md-content layout="row" layout-align="space-between center" layout-padding layout-wrap>
+        <div class="layout-column flex p++">
+          <h3 class="md-subhead">Cerrados en el mes </h3>
+          <!-- <p class="md-body-1">Ver detalles</p>-->
+        </div>
+        <div class="p++">
+          <h1>{{tCerrados.month}}</h1>
+          <!-- -->
+        </div>
+      </md-content>
+    </md-card>
+  </div>
+  <!-- -->
+  <div flex>
+    <md-card class="blue">
+      <md-content layout="row" layout-align="space-between center" layout-padding layout-wrap>
+        <div class="layout-column flex p++">
+          <h3 class="md-subhead">Cerrados en la semana </h3>
+          <!-- <p class="md-body-1">Ver detalles</p>-->
+        </div>
+        <div class="p++">
+          <h1>{{tCerrados.week}}</h1>
+          <!-- -->
+        </div>
+      </md-content>
+    </md-card>
+  </div>
+  <!-- -->
+  <div flex>
+    <md-card class="blue">
+      <md-content layout="row" layout-align="space-between center" layout-padding layout-wrap>
+        <div class="layout-column flex p++">
+          <h3 class="md-subhead">Cerrados en el día</h3>
+          <!-- <p class="md-body-1">Ver detalles</p>-->
+        </div>
+        <div class="p++">
+          <h1>{{tCerrados.dia}}</h1>
+          <!-- -->
+        </div>
+      </md-content>
+    </md-card>
+  </div>
+</div>
+
+<div layout='row' layout-wrap>
+  <div flex>
+    <md-card>
+      <md-content layout="row" layout-align="space-between center" layout-padding >
+        <div class="layout-column flex p++" style="padding-bottom:0px!important">
+          <h3 class="md-subhead">Tickets nuevos y en proceso</h3>
+          <p class="md-body-1">Presiona doble click en el ticket que quieras ver detalladamente </p>
+        </div>
+      </md-content>
+      <md-card-content>
+        <table datatable="" dt-instance="insNuevo" dt-options="optNuevo" dt-columns="colNuevo" class="row-border hover">
+        </table>
+      </md-card-content>
+    </md-card>
+  </div>
+  <div flex>
+    <md-card>
+      <md-content layout="row" layout-align="space-between center" layout-padding >
+        <div class="layout-column flex p++" style="padding-bottom:0px!important">
+          <h3 class="md-subhead">Tickets pendientes por cierre</h3>
+          <p class="md-body-1">Presiona doble click en el ticket que quieras ver detalladamente </p>
+        </div>
+      </md-content>
+      <md-card-content>
+        <table datatable="" dt-instance="insPendiente" dt-options="optPendiente" dt-columns="colPendiente" class="row-border hover">
+        </table>
+      </md-card-content>
+    </md-card>
+  </div>
+
+
+</div>
+
+
+
+
+
+
+<lx-dialog class="dialog dialog--l" id="panel" auto-close="true" >
+  <div class="dialog__header">
+    <div class="toolbar bgc-light-blue-500 pl++">
+      <span class="toolbar__label tc-white fs-title">
+          Documentar ticket
+      </span>
+      <div class="toolbar__right">
+
+      </div>
+    </div>
+  </div>
+  <div class="dialog__content" ng-class=" !TD.show.ver ?  'p++' : 'p'   ">
+    <!-- DOCUMENTACION INICIAL -->
+    <div >
+      {{texto}}
+    </div>
+      <lx-text-field label="Notas" >
+        <textarea  type="text" ng-model="doc.texto"></textarea>
+      </lx-text-field>
+      <!-- RADIOS -->
+      <br>
+      <div class="radio-group">
+        <div flex-container="row" flex-gutter="24">
+          <div flex-item>
+            <div class="radio-button" >
+                <input ng-model="doc.r" type="radio" id="radio1"  value="O" class="radio-button__input" >
+                <label for="radio1" class="radio-button__label">Observación(Notas)</label>
+            </div>
+          </div>
+          <div flex-item>
+            <div class="radio-button">
+               <input ng-model="doc.r" type="radio" id="radio2"  value="R" class="radio-button__input"  >
+               <label for="radio2" class="radio-button__label">Solucionado remotamente</label>
+           </div>
+          </div>
+          <div flex-item>
+            <div class="radio-button">
+               <input ng-model="doc.r" type="radio" id="radio3"  value="S" class="radio-button__input" >
+               <label for="radio3" class="radio-button__label">Solucionado en sitio</label>
+           </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="dialog__actions">
+      <button class="btn btn--m btn--blue btn--flat" lx-ripple lx-dialog-close>Cancelar</button>
+      <button class="btn btn--m btn--blue btn--flat" ng-click="documentar()" lx-ripple>Aceptar</button>
+  </div>
+</lx-dialog>

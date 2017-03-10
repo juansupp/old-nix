@@ -1,0 +1,59 @@
+<form name="form">
+  <br>
+  <div flex-container="row" flex-gutter="24">
+    <div flex-item>
+      <lx-text-field label="Nombre">
+        <input type="text"  ng-model="AU.persona.nombre">
+      </lx-text-field>
+    </div>
+  </div>
+  <!-- ROW -->
+  <div flex-container="row" flex-gutter="24">
+    <div flex-item>
+      <lx-text-field label="Correo electronico">
+        <input type="text" ng-model="AU.persona.correo">
+      </lx-text-field>
+    </div>
+    <div flex-item class="valid {{form.telefono.$valid}}">
+      <lx-text-field label="Numero telefonico ">
+        <input type="text" name="telefono"  ng-pattern="oN" ng-model="AU.persona.telefono">
+      </lx-text-field>
+    </div>
+  </div>
+  <!-- Row-->
+  <div flex-container="row" flex-gutter="24">
+    <div flex-item>
+      <lx-text-field label="Usuario">
+        <input type="text" ng-model="AU.user.nick">
+      </lx-text-field>
+    </div>
+    <div flex-item>
+       <lx-select ng-model="AU.user.rol" placeholder="Rol" choices="sRol" floating-label>
+           <lx-select-selected>
+               {{ $selected.nombre_rol }}
+           </lx-select-selected>
+
+           <lx-select-choices>
+               {{ $choice.nombre_rol }}
+           </lx-select-choices>
+       </lx-select>
+     </div>
+   </div>
+  <!-- row -->
+  <div flex-container="row" flex-gutter="24">
+    <div flex-item>
+      <lx-text-field label="Contraseña">
+        <input type="password" ng-model="AU.user.pass">
+      </lx-text-field>
+    </div>
+    <div flex-item>
+      <lx-text-field label="Contraseña de nuevo">
+        <input type="password" ng-model="AU.user.pass2">
+      </lx-text-field>
+    </div>
+  </div>
+  <div class="md-actions p++" layout="row" layout-align="end center">
+     <button ng-disabled="!form.telefono.$valid" class="btn btn--m btn--blue btn--flat" ng-click="add()" lx-ripple>+ Agregar</button>
+   </div>
+
+ </form>

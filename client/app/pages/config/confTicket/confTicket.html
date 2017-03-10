@@ -1,0 +1,193 @@
+<div layout='row'>
+  <div flex>
+    <form name="PF" ng-submit="submit($event)">
+      <!-- Prioridad -->
+
+      <md-content layout="row" layout-align="space-between center" layout-padding="" class="md-default-theme">
+        <div class="layout-column flex p+" style="padding-left:2px!important;padding-bottom:0px!important">
+          <h3 class="md-subhead">Prioridad de tickets</h3>
+          <p class="md-body-1">Según la prioridad, el ticket se debe solucionar en los tiempos estipulados</p>
+        </div>
+        <div class="p+">
+          <div layout="row">
+            <div flex="">
+              <md-button type='submit' class="md-primary" >+ Agregar </md-button>
+            </div>
+          </div>
+        </div>
+      </md-content>
+
+
+      <div layout='row'>
+        <div flex>
+          <md-input-container class="md-block">
+            <label>Prioridad</label>
+            <input md-maxlength="100" required name="prioridad" ng-model="prioridad.nivel">
+            <div ng-messages="PF.prioridad.$error">
+              <div ng-message="required">Campo requerido.</div>
+              <div ng-message="md-maxlength">Procura que no pase de 100 caracteres.</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div flex='20'>
+          <md-input-container class="md-block">
+            <label>Rango días</label>
+            <input  type='number'  step="any" required min="1" max="10" required name="dias" ng-model="prioridad.rango_fechas">
+            <div ng-messages="PF.dias.$error">
+              <div ng-message="required">Campo obligatorio.</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div flex='20'>
+          <md-input-container class="md-block">
+            <label>Rango tiempo</label>
+            <input type='number' step="any" required name="horas" min="1" max="12" ng-model="prioridad.rango_hora">
+            <div ng-messages="PF.horas.$error">
+              <div ng-message="required">Campo obligatorio.</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+    </form>
+
+
+    <!-- ROW 2-->
+    <div layout='row'>
+      <!-- MESA -->
+      <div flex>
+        <form name="MF" ng-submit="submit($event)">
+          <md-content layout="row" layout-align="space-between center" layout-padding="" class="md-default-theme">
+            <div class="layout-column flex p+" style="padding-left:2px!important;padding-bottom:0px!important">
+              <h3 class="md-subhead">Mesa de servicio</h3>
+              <p class="md-body-1">Opción mesa de servicio</p>
+            </div>
+            <div class="p+">
+              <div layout="row">
+                <div flex="">
+                  <md-button class="md-primary" type='submit'>+ Agregar </md-button>
+                </div>
+              </div>
+            </div>
+          </md-content>
+          <div layout='row'>
+            <div flex>
+              <md-input-container class="md-block">
+                <label></label>
+                <input md-maxlength="100" required name="mesa" ng-model="mesa.mesa">
+                <div ng-messages="MF.mesa.$error">
+                  <div ng-message="required">Campo obligatorio.</div>
+                  <div ng-message="md-maxlength">Procura que no pase de 100 caracteres.</div>
+                </div>
+              </md-input-container>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- -->
+      <div flex>
+        <form name="OF" ng-submit="submit($event)">
+          <md-content layout="row" layout-align="space-between center" layout-padding="" class="md-default-theme">
+            <div class="layout-column flex p+" style="padding-left:2px!important;padding-bottom:0px!important">
+              <h3 class="md-subhead">Origen</h3>
+              <p class="md-body-1">El medio por el cual se solicitó el ticket</p>
+            </div>
+            <div class="p+">
+              <div layout="row">
+                <div flex="">
+                  <md-button type='submit' class="md-primary">+ Agregar </md-button>
+                </div>
+              </div>
+            </div>
+          </md-content>
+
+
+          <div layout='row'>
+            <div flex>
+              <md-input-container class="md-block">
+                <label></label>
+                <input md-maxlength="100" required name="origen" ng-model="original.atencion">
+                <div ng-messages="OF.origen.$error">
+                  <div ng-message="required">Campo obligatorio.</div>
+                  <div ng-message="md-maxlength">Procura que no pase de 100 caracteres.</div>
+                </div>
+              </md-input-container>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+    <!-- ROW 3-->
+    <div layout='row'>
+      <!-- MESA -->
+      <div flex>
+        <form name="SF" ng-submit="submit($event)">
+          <md-content layout="row" layout-align="space-between center" layout-padding="" class="md-default-theme">
+            <div class="layout-column flex p+" style="padding-left:2px!important;padding-bottom:0px!important">
+              <h3 class="md-subhead">Servicio</h3>
+              <p class="md-body-1">Nuevo tipo de servicio/accion</p>
+            </div>
+            <div class="p+">
+              <div layout="row">
+                <div flex="">
+                  <md-button  type='submit' class="md-primary" >+ Agregar </md-button>
+                </div>
+              </div>
+            </div>
+          </md-content>
+          <div layout='row'>
+            <div flex>
+              <md-input-container class="md-block">
+                <label></label>
+                <input md-maxlength="150" required name="servicio" ng-model="servicio.nombre_servicio">
+                <div ng-messages="SF.servicio.$error">
+                  <div ng-message="required">Campo requerido.</div>
+                  <div ng-message="md-maxlength">Procura que no pase de 150 caracteres.</div>
+                </div>
+              </md-input-container>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- -->
+      <div flex>
+        <form name="AF" ng-submit="submit($event)">
+          <md-content layout="row" layout-align="space-between center" layout-padding="" class="md-default-theme">
+            <div class="layout-column flex p+" style="padding-left:2px!important;padding-bottom:0px!important">
+              <h3 class="md-subhead">Area</h3>
+              <p class="md-body-1">Nueva area</p>
+            </div>
+            <div class="p+">
+              <div layout="row">
+                <div flex="">
+                  <md-button type='submit' class="md-primary">+ Agregar </md-button>
+                </div>
+              </div>
+            </div>
+          </md-content>
+
+
+          <div layout='row'>
+            <div flex>
+              <md-input-container class="md-block">
+                <label></label>
+                <input md-maxlength="100" required name="area" ng-model="area.nombre_area">
+                <div ng-messages="AF.area.$error">
+                  <div ng-message="required">Campo obligatorio.</div>
+                  <div ng-message="md-maxlength">D: Procura que no pase de 100 caracteres </div>
+                </div>
+              </md-input-container>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div layout='column'>
+  <!-- -->
+  
+  
+
+  <md-card >
+    <div  layout="row" layout-align="space-between center" layout-padding>
+      <div class="layout-column" flex>
+      
+
+        <h3 class="md-subhead">Inventario</h3>
+        <p class="md-body-1" align="justify">
+          Si deseas realizar alguna accion sobre algun activo 
+          debes seleccionar el activo haciendo click sobre la fila 
+          y acontinuación se mostrarán las acciones posibles.
+        </p>
+      </div>
+      <div class="layout-column flex">
+        
+
+      </div>
+    </div>
+
+
+    <div  layout="row" layout-align="space-between center" layout-padding>
+      <tabler struct='vmai.struct' style='width: 100%;' scoper = 'vmai' />  
+    </div>
+
+    
+  </md-card>
+  <!-- OPCIONES MD CARD -->
+  <!--<md-card flex='20' >
+
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+         <p style='font-size:15px;'>Activo | {{vmai.activoSeleccionado}}</p>
+      </div>
+    </md-toolbar>
+
+
+    <md-card-content layout='column' ng-if='vmai.step === 1'>
+      <div ng-if="vmai.activoSeleccionado">
+        <md-button  class="md-primary" style='width: 100%;' ng-click="vmai.bindingForm('see','activo')">Editar</md-button >
+        <md-button  class="md-primary" style='width: 100%;' ng-click="vmai.bindingForm('see','activo')">Ver especificaciones</md-button >
+        <md-button   class="md-primary" style='width: 100%;' ng-click="vmai.bindingForm('redirect','activo')">Ir a hoja de vida</md-button >
+        
+      </div>
+    </md-card-content>
+
+    <md-card-content layout='column'  ng-if='vmai.step === 2'>
+      <former type='vmai.variablesForm.type' table='vmai.variablesForm.table' key='vmai.variablesForm.key'></former>
+    </md-card-content>
+
+  </md-card>-->
+</div>

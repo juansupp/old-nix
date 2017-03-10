@@ -1,0 +1,65 @@
+<div layout='row'>
+  <div flex>
+    <md-card>
+      <md-content layout="row" layout-align="space-between center" layout-padding>
+        <div class="layout-column flex p++" style="padding-bottom:0px!important">
+          <h3 class="md-subhead">Tickets solicitados</h3>
+          <p class="md-body-1">Presiona doble click en el ticket que quieras realizar</p>
+        </div>
+      </md-content>
+      <md-card-content>
+        <table datatable="" dt-instance="insSolicitud" dt-options="optSolicitud" dt-columns="colSolicitud" class="row-border hover">
+        </table>
+      </md-card-content>
+    </md-card>
+  </div>
+  <div flex>
+    <md-card>
+      <md-content layout="row" layout-align="space-between center" layout-padding>
+        <div class="layout-column flex p++" style="padding-bottom:0px!important">
+          <h3 class="md-subhead">Tickets pendientes por cierre</h3>
+          <p class="md-body-1">Presiona el botón check en el ticket que quieras cerrar.</p>
+        </div>
+      </md-content>
+      <md-card-content>
+        <table datatable="" dt-instance="insPendiente" dt-options="optPendiente" dt-columns="colPendiente" class="row-border hover">
+        </table>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>
+
+
+
+
+
+
+<lx-dialog class="dialog dialog--l" id="panel" auto-close="true">
+  <div class="dialog__header">
+    <div class="toolbar bgc-light-blue-500 pl++">
+      <span class="toolbar__label tc-white fs-title">
+        Cerrar ticket
+      </span>
+      <div class="toolbar__right">
+
+      </div>
+    </div>
+  </div>
+  <div class="dialog__content" ng-class=" !TD.show.ver ?  'p++' : 'p'   ">
+    <lx-text-field label="Notas de cierre">
+      <textarea type="text" ng-model="TD.cerrar.texto"></textarea>
+    </lx-text-field>
+    <div flex-container="row" flex-gutter="24">
+      <div flex-item>
+        <md-select ng-repeat="enc in TD.cerrar.encuesta" ng-model="enc.Respuesta" aria-label="true" placeholder="{{enc.pregunta}}">
+          <md-option ng-repeat="resp in enc.respuestas" value="{{resp.id_resp_pos}}">{{resp.respuestaPos}}</md-option>
+        </md-select>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog__actions">
+    <button class="btn btn--m btn--blue btn--flat" lx-ripple lx-dialog-close>Cancelar</button>
+    <button class="btn btn--m btn--blue btn--flat" ng-click="closeTicket()" lx-ripple>Aceptar</button>
+  </div>
+</lx-dialog>

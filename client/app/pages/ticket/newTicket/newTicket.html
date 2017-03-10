@@ -1,0 +1,220 @@
+<div layout="row" layout-wrap>
+  <div flex>
+    <md-card>
+      <md-card-content>
+        <div flex-item>
+          <lx-text-field label="Descripción">
+            <textarea type="text" ng-model="arrT.descripcion"></textarea>
+          </lx-text-field>
+        </div>
+        <div flex-container="row" flex-gutter="24">
+          <!-- SERVICIO -->
+          <div flex-item>
+          <lx-select ng-model="arrT.servicio" placeholder="Tipo de servicio" choices="sel.servicio" floating-label>
+              <lx-select-selected>
+                {{ $selected.nombre_servicio }}
+              </lx-select-selected>
+              <lx-select-choices>
+                {{ $choice.nombre_servicio }}
+              </lx-select-choices>
+            </lx-select>
+          </div>
+          <!-- MESA -->
+          <div flex-item>
+            <lx-select ng-model="arrT.mesa" placeholder="Mesa de servicio" choices="sel.mesa" floating-label>
+              <lx-select-selected>
+                {{ $selected.mesa }}
+              </lx-select-selected>
+              <lx-select-choices>
+                {{ $choice.mesa }}
+              </lx-select-choices>
+            </lx-select>
+          </div>
+          <!-- MESA -->
+          <div flex-item>
+            <lx-select ng-model="arrT.original" placeholder="Origen" choices="sel.original" floating-label>
+              <lx-select-selected>
+                {{ $selected.atencion }}
+              </lx-select-selected>
+              <lx-select-choices>
+                {{ $choice.atencion }}
+              </lx-select-choices>
+            </lx-select>
+          </div>
+        </div>
+        <div flex-container="row" flex-gutter="24">
+          <!-- PRIORIDAD -->
+          <div flex-item>
+            <lx-select ng-model="arrT.prioridad" placeholder="Prioridad del servicio" change="openDateP()" choices="sel.prioridad" floating-label>
+              <lx-select-selected>
+                {{ $selected.nivel }}
+              </lx-select-selected>
+              <lx-select-choices>
+                {{ $choice.nivel }}
+              </lx-select-choices>
+            </lx-select>
+          </div>
+          <!-- Fecha -->
+          <div flex-item>
+            <lx-date-picker model="arrT.fecha"  label="Fecha atención" icon="calendar" locale="es" allow-clear="true"></lx-date-picker>
+          </div>
+        </div>
+        <div flex-container="row" flex-gutter="24">
+          <!-- Cliente - Sede -->
+          <div flex-item>
+            <h4 ng-show="t.active">{{arrT.nombre}}</h4>
+            <lx-select ng-model="arrT.sede" placeholder="Cliente sede" change="cargaAreas(newValue, oldValue)" choices="sel.sede" floating-label ng-hide="t.active">
+              <lx-select-selected>
+                {{ $selected.nombre }}
+              </lx-select-selected>
+              <lx-select-choices>
+                {{ $choice.nombre }}
+              </lx-select-choices>
+            </lx-select>
+          </div>
+          <!-- AREA -->
+          <div flex-item>
+            <h4 ng-show="t.active">{{arrT.nombre_sede}}</h4>
+            <lx-select ng-model="arrT.area" placeholder="Area" change="changeArea(newValue,oldValue)" choices="sel.area" floating-label ng-hide="t.active">
+              <lx-select-selected>
+                {{ $selected.nombre_area }}
+              </lx-select-selected>
+              <lx-select-choices>
+                {{ $choice.nombre_area }}
+              </lx-select-choices>
+            </lx-select>
+          </div>
+          <!-- USUARIO -->
+          <div flex-item>
+            <h4 ng-show="t.active">{{arrT.nombre_area}}</h4>
+            <lx-select ng-model="arrT.usuario" placeholder="Usuario" choices="sel.usuario" floating-label ng-hide="t.active">
+              <lx-select-selected>
+                {{ $selected.nombre_contacto }}
+              </lx-select-selected>
+              <lx-select-choices>
+                {{ $choice.nombre_contacto }}
+              </lx-select-choices>
+            </lx-select>
+          </div>
+        </div>
+        <!-- Tecnico -->
+        <div flex-item>
+          <lx-select ng-model="arrT.tecnico" placeholder="Tecnico encargado" choices="sel.tecnico" floating-label>
+            <lx-select-selected>
+              {{ $selected.nombre }}
+            </lx-select-selected>
+            <lx-select-choices>
+              {{ $choice.nombre }}
+            </lx-select-choices>
+          </lx-select>
+        </div>
+        <!-- ACTIVO -->
+        <br>
+        <div layout='row' ng-show="t.active">
+
+        </div>
+        <div class="radio-group" ng-hide="t.active">
+          <div flex-container="row" flex-gutter="24" >
+            <div flex-item>
+              <div class="radio-button">
+                <input ng-model="r" type="radio" id="radio1" name="radio1" value="1" class="radio-button__input">
+                <label for="radio1" class="radio-button__label">Sin activo</label>
+                <span class="radio-button__help">En caso que el servicio no vaya dirigido a algún activo .</span>
+              </div>
+            </div>
+            <div flex-item>
+              <div class="radio-button">
+                <input ng-model="r" type="radio" id="radio2" name="radio1" value="2" class="radio-button__input" ng-disabled="areaLista === false;">
+                <label for="radio2" class="radio-button__label">Activo cliente</label>
+                <span class="radio-button__help">En caso que el servicio vaya dirigido a un activo del ciente (sin placas) </span>
+              </div>
+            </div>
+            <div flex-item>
+              <div class="radio-button">
+                <input ng-model="r" type="radio" id="radio3" name="radio1" value="3" class="radio-button__input" ng-disabled="areaLista === false;">
+                <label for="radio3" class="radio-button__label">Activo propio</label>
+                <span class="radio-button__help">En caso que el servicio vaya dirigido a un activo propio (con placas)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- TABLE -->
+        <div flex-item ng-show=" showAc === true  " id="contTable" class="ng-hide">
+          <div class="data-table-container">
+            <header class="data-table-header" style="padding:0!important;">
+              <div class="data-table-header__label">
+                <span class="md-headline">Selecciona el activo del area {{arrT.area.nombre_area}} de {{arrT.sede.nombre}}</span>
+              </div>
+            </header>
+            <!--datatable="ng" dt-options="dt.dtOptions" -->
+            <table datatable="ng" dt-options="options" class="row-border hover">
+              <thead>
+                <tr>
+                  <th ng-repeat="itemTH in tHead " ng-if="itemTH !== 'id_activo';">{{itemTH}}</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th ng-repeat="nulle in tFilter" ng-if="nulle !== 'id_activo';"></th>
+                </tr>
+              </tfoot>
+              <tbody>
+                <!-- ng-click="setSelected({{row}})" ng-class="{selected : vote.id === idSelectedVote}" -->
+                <tr ng-repeat="row in tBody" ng-click="changeSel(row)" ng-class="{rowS : row.id_activo === arrT.activo.id_activo}">
+                  <td ng-repeat="col in tFilter" ng-if="col !== 'id_activo';" lx-tooltip="{{row[col]}}">{{row[col]}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </md-card-content>
+      <div class="md-actions" layout="row" layout-align="end center">
+        <button class="btn btn--m btn--blue btn--flat" ng-click="showConfirm()" lx-ripple>Crear ticket</button>
+        <div id="progress"></div>
+      </div>
+    </md-card>
+  </div>
+</div>
+<!-- CONFIRMACION -->
+<lx-dialog class="dialog dialog--l" id="confirm" auto-close="true">
+  <div class="dialog__header">
+    <div class="toolbar bgc-light-blue-500 pl++">
+      <span class="toolbar__label tc-white fs-title">
+        Confirmación de servicio
+      </span>
+    </div>
+  </div>
+
+  <div class="dialog__content">
+    <div class="p++">
+      <h3>Ticket N° {{NN}}</h3>
+      <h4>{{arrT.servicio.nombre_servicio}}</h4>
+      <md-divider></md-divider>
+      <p>Cliente: {{arrT.sede.nombre}}</p>
+      <p>Area: {{arrT.area.nombre_area}}</p>
+      <p>Fecha atención: {{arrT.fecha}}</p>
+      <p>Tecnico encargado: {{arrT.tecnico.nombre}}</p>
+      </br>
+      <div ng-if="r !== 1">
+        <h4>{{arrT.activo.Activo }}</h4>
+        <md-divider></md-divider>
+        <p>Serial: {{arrT.activo.Serial}}</p>
+        <p>Marca: {{arrT.activo.Marca}}</p>
+        <p>Modelo: {{arrT.activo.Modelo}}</p>
+        <div ng-if="r === 2">
+          <!-- Cliente -->
+          <p>{{arrT.activo.placa_mant}}</p>
+        </div>
+        <div ng-if="r ===3">
+          <!--PROPIO  -->
+          <p>Placa seguridad: {{arrT.activo.placa_seguridad}}</p>
+          <p>Placa inventario: {{arrT.activo.placa_inv}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dialog__actions">
+    <button class="btn btn--m btn--blue btn--flat" lx-ripple lx-dialog-close>Cancelar</button>
+    <button class="btn btn--m btn--blue btn--flat" ng-click="createTicket()" ng-disabled='createTciketProcess' lx-ripple>Aceptar</button>
+  </div>
+</lx-dialog>

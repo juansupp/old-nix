@@ -1,0 +1,28 @@
+<div layout="row" layout-wrap>
+  <div flex>
+    <md-card >
+      <md-card-content >
+        <md-tabs md-dynamic-height md-border-bottom md-selected="currentTab">
+          <!-- ADD -->
+          <md-tab label="Nuevo" ui-sref="m.mu.addU" ui-sref-opts="{reload: true}">
+             <md-content class="md-padding"     style="overflow: hidden">
+               <div ui-view="addU"></div>
+             </md-content>
+          </md-tab>
+          <!-- QUERY -->
+          <md-tab label="Consultar y editar" ui-sref="m.mu.queryU"  ui-sref-opts="{reload: true}">
+            <md-content class="md-padding"     style="overflow: hidden">
+              <div ui-view="queryU"></div>
+            </md-content>
+          </md-tab>
+          <!-- EDIT -->
+          <md-tab label="Estadisticas" ui-sref="m.mu.chartU"  ui-sref-opts="{reload: true}">
+            <md-content class="md-padding"     style="overflow: hidden">
+              <div ui-view="chartU"></div>
+            </md-content>
+          </md-tab>
+        </md-tabs>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

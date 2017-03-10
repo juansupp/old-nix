@@ -1,0 +1,110 @@
+<div layout="row" >
+  <div flex>
+    <md-card>
+      <md-content layout="row" layout-align="space-between center" layout-padding>
+        <div class="layout-column flex p++">
+          <h3 class="md-subhead">Total tickets creados</h3>
+          <p class="md-body-1">Selecciona un año y/o mes para filtrar</p>
+
+        </div>
+        <div class="p++">
+            <div layout="row">
+              <div flex>
+                <md-select placeholder="Año" ng-model="fil.TTG.year">
+                  <md-option ng-repeat="y in sel.Years" ng-click='filterCreados()' value="{{y.numero_anio}}">{{y.numero_anio}}</md-option>
+                </md-select>
+              </div>
+              <div flex>
+                <md-select placeholder="Mes" ng-model="fil.TTG.month">
+                  <md-option ng-repeat="m in sel.Months" ng-click='filterCreados(m.numero_mes)' value="{{m.numero_mes}}">{{m.nombre_mes}}</md-option>
+                </md-select>
+              </div>
+            </div>
+        </div>
+      </md-content>
+      <md-card-content>
+        <canvas id="line" class="chart chart-line" chart-data="MC.TTG.data" chart-labels="MC.TTG.labels" chart-series="MC.TTG.series" chart-click="MC.TTG.onClick">
+        </canvas>
+        <br>
+      </md-card-content>
+    </md-card>
+  </div>
+  <!-- -->
+  <div flex>
+    <md-card>
+      <md-content layout="row" layout-align="space-between center" layout-padding>
+        <div class="layout-column flex p++">
+          <h3 class="md-subhead">Total tickets cerrados</h3>
+          <p class="md-body-1">Selecciona un año y/o mes para filtrar</p>
+        </div>
+        <div class="p++">
+          <div layout="row">
+            <div flex>
+              <md-select placeholder="Año" ng-model="fil.TCC.year">
+                <md-option ng-repeat="y in sel.Years" ng-click='filterCerrados()' value="{{y.numero_anio}}">{{y.numero_anio}}</md-option>
+              </md-select>
+            </div>
+            <div flex>
+              <md-select placeholder="Mes" ng-model="fil.TCC.month">
+                <md-option ng-repeat="m in sel.Months" ng-click='filterCerrados(m.numero_mes)' value="{{m.numero_mes}}">{{m.nombre_mes}}</md-option>
+              </md-select>
+            </div>
+          </div>
+        </div>
+      </md-content>
+      <md-card-content>
+        <canvas id="line" class="chart chart-line" chart-data="MC.TCC.data" chart-labels="MC.TCC.labels" chart-series="MC.TCC.series" chart-click="MC.TCC.onClick" chart-legend="true">
+        </canvas>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>
+
+<!-- FIla 2 -->
+
+<div layout="row" >
+  <div flex>
+    <md-card>
+      <md-content layout="row" layout-align="space-between center" layout-padding>
+        <div class="layout-column flex p++">
+          <h3 class="md-subhead">Solicitudes Pendientes</h3>
+          <p class="md-body-1">Las solicitudes pendientes son aquellas que no han sido revisadas por soporte, puedes presionar enviar eco(click en el botón eco), de esta forma nuestro equipo de soporte podrá verificar el caso y contactar contigo</p>
+        </div>
+      </md-content>
+      <md-card-content>
+        <table datatable="" dt-instance="insSolicitud" dt-options="optSolicitud" dt-columns="colSolicitud" class="row-border hover">
+        </table>
+        <!-- TABLE SOLICITUDES SolicitudS--->
+      </md-card-content>
+    </md-card>
+  </div>
+  <!-- -->
+  <div flex>
+    <md-card>
+      <md-content layout="row" layout-align="space-between center" layout-padding>
+        <div class="layout-column flex p++">
+          <h3 class="md-subhead">Total tickets creados por estado</h3>
+          <p class="md-body-1"></p>
+        </div>
+        <div class="p++">
+          <div layout="row">
+            <div flex>
+              <md-select placeholder="Año" ng-model="fil.TCC.year">
+                <md-option ng-repeat="y in sel.Years" ng-click='filterCerrados()' value="{{y.numero_anio}}">{{y.numero_anio}}</md-option>
+              </md-select>
+            </div>
+            <div flex>
+              <md-select placeholder="Mes" ng-model="fil.TCC.month">
+                <md-option ng-repeat="m in sel.Months" ng-click='filterCerrados(m.numero_mes)' value="{{m.numero_mes}}">{{m.nombre_mes}}</md-option>
+              </md-select>
+            </div>
+          </div>
+        </div>
+      </md-content>
+      <md-card-content>
+        <!--<canvas id="line" class="chart chart-line" chart-data="MC.TCC.data" chart-labels="MC.TCC.labels" chart-series="MC.TCC.series" chart-click="MC.TCC.onClick" chart-legend="true">
+        </canvas>-->
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

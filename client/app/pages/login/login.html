@@ -1,0 +1,67 @@
+<div class="bb">
+<form ng-submit="login()">
+  <div layout="row" layout-wrap>
+    <div flex>
+      <div flex-container="row">
+        <div flex-item="4" ></div>
+        <div flex-item="4" >
+
+          <md-toolbar class="toogle-menu-nix md-default-theme toolLogin" align="" >
+            <div class="sidebar-left-logo loge">
+              <img ng-src="assets/images/nix23.svg" alt="triangular" width="80" src="assets/images/nix23.svg" class="imgLog">
+            </div>
+            <h3 flex="" class="sidebar-left-title title ng-binding log">NIX</h3>
+          </md-toolbar>
+
+        </div>
+      </div>
+      <div class="tc-black-1 m++" flex-container="row">
+        <div flex-item="4" ></div>
+        <div flex-item="4" >
+          <div class="card">
+            <div class="p+">
+              <strong class="fs-headline  tc-black-2 display-block">Login</strong>
+              <br>
+              <div class="paragraph fs-body-1">
+                <div flex-container="row">
+                  <div flex-item>
+                    <lx-text-field label="Usuario"  fixed-label="true" icon="account-outline">
+                      <input type="text" name="name" value="" ng-model='data.usu' >
+                    </lx-text-field>
+                  </div>
+                </div>
+
+                <div flex-container="row">
+                  <div flex-item>
+                    <lx-text-field label="Contraseña" fixed-label="true" icon="lock-open-outline">
+                      <input type="password" name="name" value="" ng-model='data.pass' >
+                    </lx-text-field>
+                  </div>
+                </div>
+
+                <div flex-container="row">
+                  <div flex-item>
+                    <br>
+                    <div class="checkbox loge">
+                        <input type="checkbox" id="checkbox1" value="CH" ng-model="chGuardar" class="checkbox__input">
+                        <label for="checkbox1" class="checkbox__label logch">Recordar cuenta</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div flex-container="row">
+                  <div flex-item align=center>
+                    <br>
+                    <button class="btn btn--l btn--blue btn--flat" type="submit" lx-ripple>Iniciar sesión</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>
+</div>

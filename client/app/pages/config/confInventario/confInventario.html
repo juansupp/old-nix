@@ -1,0 +1,60 @@
+<div layout='row'>
+  <div flex>
+    <!-- ROW 1-->
+    <div layout='row'>
+      <!-- MESA -->
+      <div flex>
+        <form name="TAF" ng-submit="submit($event)">
+          <md-content layout="row" layout-align="space-between center" layout-padding="" class="md-default-theme">
+            <div class="layout-column flex p+" style="padding-left:2px!important;padding-bottom:0px!important">
+              <h3 class="md-subhead">Tipo de activo</h3>
+              <p class="md-body-1">Para proporcionar un nuevo tipo de activo con especificaciones debes interponer cada una con comas ej (ram,dico duro,procesador...) en caso contrario unicamente debes dejar en blanco el campo de las especificaciones.</p>
+            </div>
+            <div class="p+">
+              <div layout="row">
+                <div flex="">
+                  <md-button class="md-primary">+ Agregar </md-button>
+                </div>
+              </div>
+            </div>
+          </md-content>
+          <div layout='row'>
+            <div flex>
+              <md-input-container class="md-block">
+                <label>Tipo de activo </label>
+                <input md-maxlength="100" required name="tipo_activo" ng-model="ta.nombre_tipo_activo">
+                <div ng-messages="TAF.tipo_activo.$error">
+                  <div ng-message="required">Campo requerido.</div>
+                  <div ng-message="md-maxlength">Procura que no pase de 100 caracteres.</div>
+                </div>
+              </md-input-container>
+            </div>
+            <div flex>
+              <md-input-container class="md-block">
+                <label>Especificaciones</label>
+                <input ng-model="esp.campos">
+              </md-input-container>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- ROW 2-->
+    <div layout='row'>
+      <!-- MESA -->
+      <div flex>
+        <!--<form name="MEF">-->
+        <md-content layout="row" layout-align="space-between center" layout-padding="" class="md-default-theme">
+          <div class="layout-column flex p+" style="padding-left:2px!important;padding-bottom:0px!important">
+            <h3 class="md-subhead">Modulo exportación</h3>
+            <p class="md-body-1">Para proporcionar un nuevo tipo de activo con especificaciones debes interponer cada una con comas ej (ram,dico duro,procesador...) en caso contrario unicamente debes dejar en blanco el campo de las especificaciones.</p>
+          </div>
+          <br>
+        </md-content>
+        <div layout="row">
+          <input type="file" name="excel_file" accept=".xlsx" onchange="angular.element(this).scope().exportTipo(this.files);" required="true">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

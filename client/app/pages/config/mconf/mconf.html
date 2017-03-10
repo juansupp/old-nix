@@ -1,0 +1,28 @@
+<div layout="row" layout-wrap>
+  <div flex>
+    <md-card >
+      <md-card-content >
+        <md-tabs md-dynamic-height md-border-bottom md-selected="currentTab">
+          <!-- ADD -->
+          <md-tab label="Ticket" ui-sref="m.mconf.confTicket" ui-sref-opts="{reload: true}">
+             <md-content class="md-padding" style="overflow: hidden">
+               <div ui-view="confTicket"></div>
+             </md-content>
+          </md-tab>
+          <!-- QUERY -->
+          <md-tab label="Inventario" ui-sref="m.mconf.confInventario"  ui-sref-opts="{reload: true}">
+            <md-content class="md-padding"     style="overflow: hidden">
+              <div ui-view="confInventario"></div>
+            </md-content>
+          </md-tab>
+          <!-- EDIT -->
+          <md-tab label="Permisos" ui-sref="m.mconf.confUser"  ui-sref-opts="{reload: true}">
+            <md-content class="md-padding"     style="overflow: hidden">
+              <div ui-view="confUser"></div>
+            </md-content>
+          </md-tab>
+        </md-tabs>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

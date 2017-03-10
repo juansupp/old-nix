@@ -1,0 +1,254 @@
+////ANIMATIONS
+.mort.ng-scope
+  height 100%
+
+ md-progress-linear.md-warn ._md-bar { //OSCURO
+  background-color: #795548;
+}
+
+ md-progress-linear.md-warn ._md-container { //Claro
+   background-color: #D7CCC8;
+ }
+
+md-toolbar.md-menu-toolbar {
+    background-color: rgb(0,188,212);
+    color: white
+}
+
+.md-toolbar-tools {
+		color : white!important;
+		margin-left: 6.5px;
+}
+
+.menu
+  min-height 40px!important
+
+md-menu-bar {
+	background-color: primary-back;
+	color: white;
+}
+
+
+md-menu-bar.md-default-theme md-menu.md-open > button, md-menu-bar md-menu.md-open > button, md-menu-bar.md-default-theme md-menu > button:focus, md-menu-bar md-menu > button:focus {
+    outline: none;
+    background: #00b6cd!important;
+}
+
+md-menu-bar.md-default-theme md-menu._md-open > button, md-menu-bar md-menu._md-open > button, md-menu-bar.md-default-theme md-menu > button:focus, md-menu-bar md-menu > button:focus {
+    background: #00b6cd!important;
+    outline: none;
+}
+
+.md-icon-button.top {
+	color: white!important;
+	font-size: 10px;
+}
+
+.md-icon-button.top i {
+	font-size: 1.3rem;
+}
+
+.titulo {
+	    font-size: 1.7rem!important;
+	    font-weight: 100!important;
+	    letter-spacing: 2px;
+	    text-shadow: 1px 2px 1px rgba(0,0,0,.12);
+
+}
+
+/*
+box-shadow()
+  -webkit-box-shadow arguments
+  -moz-box-shadow arguments
+  -ms-box-shadow arguments
+  -o-box-shadow arguments
+  box-shadow arguments
+
+transition()
+  -webkit-transition arguments
+  -moz-transition arguments
+  -ms-transition arguments
+  -o-transition arguments
+  transition arguments
+
+  @keyframes foo {
+    from {
+      transform: translateY(-100%)
+    }
+    to {
+      transform: translateY(0)
+    }
+  }
+
+.fadein
+  overflow: hidden;
+  z-index: 1;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: relative;;
+  &:before , &:after
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    z-index: 3;
+  &:after
+    top: 0;
+    background linear-gradient(to bottom,rgba(0,0,0,.1)0%,transparent 100%);
+  &:before
+    bottom: 0;
+    background linear-gradient(to top,rgba(0,0,0,.1)0%,transparent 100%);
+
+.fadein.ng-hide-remove,
+.fadeout.ng-hide-add.ng-hide-add-active
+  max-height: 0;
+  transition: max-height 1s ease-out;
+
+.fadeout.ng-hide-add,
+.fadein.ng-hide-remove.ng-hide-remove-active
+  max-height: 500px;
+  transition: max-height 1s ease-in;
+
+
+
+////END ANIMATIONS
+md-sidenav.md-locked-open
+    width: 250px!important;
+    min-width: 250px!important;
+    max-width: 250px!important;
+
+.md-select-menu-container
+  z-index 9999
+
+.title
+  font-size: 1.7rem !important;
+  font-weight: 100 !important;
+  letter-spacing 2px
+  text-shadow 1px 2px 1px rgba(0, 0, 0, 0.12)
+
+.data-table-header
+  padding 0 10px 0 24px!important
+  border none!important
+
+
+.iconMenu
+  font-size 16px!important
+  margin-right 15px!important
+
+
+header div span.fs-title
+  font-size: 2rem!important;
+  font-weight: 300!important;
+  line-height: 28px!important;
+
+.sider-content
+  background-color: rgb(0, 188, 212)!important;
+
+.toogle-menu-nix
+  box-shadow 0px 2px 0px rgba(0, 0, 0, 0.12)
+  z-index 10!important;
+  font-size: 20px;
+  letter-spacing: .005em;
+  font-weight: 400;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  height: 64px;
+  max-height: 64px;
+  padding: 0 16px;
+  margin: 0;
+
+.sidebar-left-logo
+  -webkit-flex-shrink 0
+  -ms-flex-negative 0
+  flex-shrink 0
+  margin-right 15px
+
+.side-menu-link
+  text-align: left!important
+  width: 100%!important
+  height: 48px!important
+  padding: 0px 16px!important
+  margin: 0px!important
+  text-transform: none
+  border-radius: 0px !important
+  position: relative
+  white-space: normal
+  line-height: 48px!important
+  z-index: 2
+  box-shadow: none !important
+  text-transform: none!important
+  border-bottom 1px solid rgba(0, 0, 0, 0.12)!important;
+
+.side-menu-icon[md-font-icon]
+  height: 100%;
+  line-height: inherit;
+  font-size: 1.5rem;
+
+.side-menu-link.sub
+  padding-left 40px!important
+  background-color #11D0E9 !important
+  border-bottom none!important
+
+.text_filter,.number_filter,.select_filter
+  border: none;
+  transition: all 0.3s cubic-bezier(.64,.09,.08,1);
+  background-position: -200px 0;
+  background-repeat: no-repeat;
+  color: darken(#ddd, 20%);
+  width 100%
+  font-size: 0.90rem
+
+#DataTables_Table_0_filter.dataTables_filter
+  display none
+
+tfoot
+  display table-header-group
+
+md-divider
+  margin: 1% 0% !important;
+
+.browsehappy
+    background #ccc
+    color #000
+    margin 0.2em 0
+    padding 0.2em 0
+
+ //Responsive: Portrait tablets and up
+  @media screen and (min-width: 768px)
+    .container
+      max-width 730px
+
+.comp
+  padding-top 5%
+
+html, body
+  height: 100%;
+  width: 100%;
+  margin: 0;
+
+.md-select-menu-container
+  z-index 99999999!important
+
+
+.ToolUp
+  background-color #ffffff!important
+  color #4a4a4a!important
+
+.iconA
+  cursor pointer
+  margin-left 2%
+  font-size 20px!important
+
+.btnTool button
+  margin-right 7px!important
+*/

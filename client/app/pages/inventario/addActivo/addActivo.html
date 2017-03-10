@@ -1,0 +1,94 @@
+<div layout='row' layout-align="center center">
+  <md-card flex='60' flex-xs='100' flex-md='100' flex-xs='100' flex-sm='100'>
+
+
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">Nuevo activo  </span>
+      </md-card-title-text>
+
+    </md-card-title>
+
+    <md-card-content layout='column' layout-padding>
+
+      <form name="frmActivo" ng-submit='vmaa.newActivo($event,frmActivo)'>
+        <!-- ROW -->
+          <div layout='row'>
+            <md-input-container flex class="md-block">
+              <selecter model='vmaa.model.cliente' table='cliente' title='Cliente' attr='nombre' change='vmaa.loadAreaAndContact()' />
+            </md-input-container>
+
+            <md-input-container flex class="md-block">
+              <selecter title='Area' model='vmaa.model.area' table='area' attr='nombre_area' table='area' filter='vmaa.model.cliente.id_sede' wait='true' />
+            </md-input-container>
+          </div>
+
+          <md-input-container flex class="md-block">
+            <selecter model='vmaa.model.tipoActivo' table='tipo_activo' title='Activo' attr='nombre_tipo_activo' />
+          </md-input-container>
+          <br>
+          <md-input-container flex class="md-block">
+            <label>Serial</label>
+            <input required name="serial" ng-model="vmaa.model.serial">
+            <div ng-messages="frmActivo.serial.$error">
+              <div ng-message="required">Campo requerido.</div>
+            </div>
+          </md-input-container>
+
+        <!-- ROW -->
+        <div layout='row'>
+          <md-input-container flex class="md-block">
+            <label>Marca</label>
+            <input required name="marca"  ng-model="vmaa.model.marca">
+            <div ng-messages="frmActivo.marca.$error">
+              <div ng-message="required">Campo requerido.</div>
+            </div>
+          </md-input-container>
+
+
+          <md-input-container flex class="md-block">
+            <label>Modelo</label>
+            <input required name="modelo"  ng-model="vmaa.model.modelo">
+            <div ng-messages="frmActivo.modelo.$error">
+              <div ng-message="required">Campo requerido.</div>
+            </div>
+          </md-input-container>
+        </div>
+
+        <div layout='row'>
+          <md-input-container flex class="md-block">
+            <label>Inventario</label>
+            <input required name="inventario"  ng-model="vmaa.model.inventario">
+            <div ng-messages="frmActivo.inventario.$error">
+              <div ng-message="required">Campo requerido.</div>
+            </div>
+          </md-input-container>
+
+          <md-input-container flex class="md-block">
+            <label>Seguridad</label>
+            <input required name="seguridad" ng-model="vmaa.model.seguridad">
+            <div ng-messages="frmActivo.seguridad.$error">
+              <div ng-message="required">Campo requerido.</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout='row'>
+          <md-input-container flex class="md-block">
+            <label>Especificaciones</label>
+            <textarea name="esp" ng-model='vmaa.model.esp' required></textarea>
+            <div ng-messages="frmActivo.esp.$error">
+              <div ng-message="required">Campo requerido.</div>
+            </div>
+          </md-input-container>
+        </div>
+
+
+
+        <div layout="row">
+          <md-button type='submit' class="md-primary"> Registrar </md-button>
+
+        </div>
+      </form>
+    </md-card-content>
+  </md-card>
+</div>

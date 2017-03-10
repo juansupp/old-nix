@@ -1,0 +1,90 @@
+<form name="solF" ng-submit="crearSolicitud()">
+  <div layout='row'>
+    <div flex>
+      <md-card>
+        <md-card-content>
+          <div layout='row'>
+            <div flex>
+              <md-input-container>
+                <label>Descripción del servicio</label>
+                <input required name="desc" ng-model="f.desc">
+                <div ng-messages="solF.desc.$error">
+                  <div ng-message="required">Campo requerido.</div>
+                </div>
+              </md-input-container>
+            </div>
+            <div flex=15>
+              <md-input-container>
+                <md-select name='area' placeholder="Selecciona el area" ng-model="f.area" md-on-close="mu()" >
+                  <md-option ng-repeat="s in sel.area" value="{{s.id_area_sede}}">{{s.nombre_area}}</md-option>
+                </md-select>
+                <div ng-messages="solF.area.$error">
+                  <div ng-message="required">Campo requerido.</div>
+                </div>
+              </md-input-container>
+            </div>
+          </div>
+          <!-- ROW 2-->
+          <div layout='row'>
+            <div class="radio-group">
+              <div flex-container="row" flex-gutter="24">
+                <div flex-item>
+                  <div class="radio-button">
+                    <input ng-model="f.r" type="radio" id="radio1" name="radio1" value="1" class="radio-button__input">
+                    <label for="radio1" class="radio-button__label">Sin activo</label>
+                    <span class="radio-button__help">En caso que el servicio no vaya dirigido a algún activo .</span>
+                  </div>
+                </div>
+                <div flex-item>
+                  <div class="radio-button">
+                    <input ng-model="f.r" type="radio" id="radio2" name="radio1" value="2" class="radio-button__input" ng-disabled="areaLista === false;">
+                    <label for="radio2" class="radio-button__label">Activo cliente</label>
+                    <span class="radio-button__help">En caso que el servicio vaya dirigido a un activo del ciente (sin placas) </span>
+                  </div>
+                </div>
+                <div flex-item>
+                  <div class="radio-button">
+                    <input ng-model="f.r" type="radio" id="radio3" name="radio1" value="3" class="radio-button__input" ng-disabled="areaLista === false;">
+                    <label for="radio3" class="radio-button__label">Activo propio</label>
+                    <span class="radio-button__help">En caso que el servicio vaya dirigido a un activo propio (con placas)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            <!-- TABLE -->
+          <div layout="row">
+            <div flex-item ng-show=" showAc === true  " id="contTable" class="ng-hide">
+              <br>
+              <span class="md-subhead p">Selecciona el activo que corresponda al servicio</span>
+              <br>
+                <table datatable="ng" dt-options="options" class="row-border hover">
+                  <thead>
+                    <tr>
+                      <th ng-repeat="itemTH in tHead " ng-if="itemTH !== 'id_activo';">{{itemTH}}</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th ng-repeat="nulle in tFilter" ng-if="nulle !== 'id_activo';"></th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <!-- ng-click="setSelected({{row}})" ng-class="{selected : vote.id === idSelectedVote}" -->
+                    <tr ng-repeat="row in tBody" ng-click="changeSel(row)" ng-class="{rowS : row.id_activo === arrT.activo.id_activo}">
+                      <td ng-repeat="col in tFilter" ng-if="col !== 'id_activo';" >{{row[col]}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+          </div>
+          <div layout='row'>
+            <div flex>
+              <md-button class="md-primary">Registrar</md-button>
+            </div>
+          </div>
+        </md-card-content>
+      </md-card>
+    </div>
+  </div>
+</form>

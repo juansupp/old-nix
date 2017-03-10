@@ -1,0 +1,176 @@
+<div layout="row" layout-wrap>
+  <div flex>
+    <md-card>
+      <md-content layout="row" layout-align="space-between center" layout-padding>
+        <div class="layout-column flex p++">
+          <h3 class="md-subhead">Total tickets</h3>
+          <p class="md-body-1">Something</p>
+        </div>
+        <div class="p++">
+          <!-- -->
+          <md-button lx-tooltip='Filtros avanzados' ng-click="openD('Filtros avanzados')" aria-label="Open demo menu" class="md-icon-button">
+            <i class="fa fa-filter"></i>
+          </md-button>
+          <!-- -->
+          <md-button lx-tooltip='Refrescar tabla' ng-click="refreshTable()" aria-label="Open demo menu" class="md-icon-button" ng-click="$mdOpenMenu()">
+            <i class="fa fa-refresh"></i>
+          </md-button>
+        </div>
+      </md-content>
+      <md-card-content>
+        <div class="data-table-container">
+          <table datatable="" dt-instance="instanceT" dt-options="dtOptions" dt-columns="dtColumns" class="row-border hover">
+            <tfoot>
+              <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>
+<lx-dialog class="dialog dialog--l" id="panel" auto-close="true">
+  <div class="dialog__header">
+    <div class="toolbar bgc-light-blue-500 pl++">
+      <span class="toolbar__label tc-white fs-title">
+        {{TD.title}}
+      </span>
+      <div class="toolbar__right">
+
+      </div>
+    </div>
+  </div>
+  <div class="dialog__content" ng-class=" !TD.show.ver ?  'p++' : 'p'   ">
+    <!-- DOCUMENTACION INICIAL -->
+    <div ng-if="!TD.show.ver">
+      <p >{{TD.doc}}</p>
+      <md-divider></md-divider>
+    </div>
+    <!-- See Docm -->
+    <div ng-show="TD.show.ver">
+      <!--<md-tabs  md-border-bottom>
+        <md-tab ng-repeat="docum in TD.ver" label="{{docum.title}}">
+          <md-content class="md-padding">
+            <h2 >{{docum.fecha}} {{docum.hora}} </h2>
+            <h3 >{{docum.persona}}</h3>
+            <p style='text-align: justify;'>{{docum.texto}}</p>
+          </md-content>
+        </md-tab>
+      </md-tabs>-->
+      <lx-tabs>
+        <lx-tab ng-repeat="docum in TD.ver" heading="{{docum.title}}">
+          <h2 ><b>Fecha:  </b>{{docum.fecha}}</h2>
+          <h2 ><b>Hora:  </b>{{docum.hora}}</h2>
+          <h3 >{{docum.persona}}</h3>
+          <p >{{docum.texto}}</p>
+        </lx-tab>
+      </lx-tabs>
+    </div>
+    <!-- Escalar -->
+    <div ng-show="TD.show.escalar">
+      <lx-select ng-model="TD.escalar.tecnico" placeholder="Selecciona el tecnico a escalar" choices="sel.tecnicos" floating-label>
+        <lx-select-selected>
+          {{ $selected.nombre }}
+        </lx-select-selected>
+        <lx-select-choices>
+          {{ $choice.nombre }}
+        </lx-select-choices>
+      </lx-select>
+      <lx-text-field label="Razón por la que se escala">
+        <textarea type="text" ng-model="TD.escalar.texto"></textarea>
+      </lx-text-field>
+    </div>
+    <!-- Documentar -->
+    <div ng-show="TD.show.documentar">
+      <lx-text-field label="Notas">
+        <textarea type="text" ng-model="TD.documentar.texto"></textarea>
+      </lx-text-field>
+      <!-- RADIOS -->
+      <br>
+      <div class="radio-group">
+        <div flex-container="row" flex-gutter="24">
+          <div flex-item>
+            <div class="radio-button">
+              <input ng-model="TD.documentar.r" type="radio" id="radio1" value="O" class="radio-button__input">
+              <label for="radio1" class="radio-button__label">Observación(Notas)</label>
+            </div>
+          </div>
+          <div flex-item>
+            <div class="radio-button">
+              <input ng-model="TD.documentar.r" type="radio" id="radio2" value="R" class="radio-button__input">
+              <label for="radio2" class="radio-button__label">Solucionado remotamente</label>
+            </div>
+          </div>
+          <div flex-item>
+            <div class="radio-button">
+              <input ng-model="TD.documentar.r" type="radio" id="radio3" value="S" class="radio-button__input">
+              <label for="radio3" class="radio-button__label">Solucionado en sitio</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Cambio Estado -->
+    <div ng-show="TD.show.cambio">
+      <md-select ng-model="TD.cambio.estado" aria-label="true" placeholder="Selecciona el nuevo estado">
+        <md-option ng-repeat="estado in TD.cambio.estados" value="{{estado.val}}">{{estado.name }}</md-option>
+      </md-select>
+      <lx-text-field label="Razón por la que cambia de estado">
+        <textarea type="text" ng-model="TD.cambio.texto"></textarea>
+      </lx-text-field>
+    </div>
+    <!-- Cerrar -->
+    <div ng-show="TD.show.cerrar">
+      <lx-text-field label="Notas de cierre">
+        <textarea type="text" ng-model="TD.cerrar.texto"></textarea>
+      </lx-text-field>
+      <div flex-container="row" flex-gutter="24">
+        <div flex-item>
+          <md-select ng-repeat="enc in TD.cerrar.encuesta" ng-model="enc.Respuesta" aria-label="true" placeholder="{{enc.pregunta}}">
+            <md-option ng-repeat="resp in enc.respuestas" value="{{resp.id_resp_pos}}">{{resp.respuestaPos}}</md-option>
+          </md-select>
+        </div>
+      </div>
+    </div>
+    <!-- FILTROS AVANZADOS -->
+    <div ng-show="TD.show.filter">
+      <div flex-container="row" flex-gutter="24">
+        <div flex-item>
+          <md-select ng-model="TD.filter.estado" aria-label="true" placeholder="Selecciona un estado">
+            <md-option ng-repeat="estado in TD.cambio.estados" value="{{estado.val}}">{{estado.name }}</md-option>
+          </md-select>
+        </div>
+        <!--<div flex-item>
+           <div class="checkbox mt+">
+              <input ng-model="TD.filter.hibernados" type="checkbox" id="checkbox2" class="checkbox__input" >
+              <label for="checkbox2" class="checkbox__label">Mostrar tickets hibernados</label>
+              <span class="checkbox__help">Los tickets hibernados son aquellos que han sido removidos por alguna razón.</span>
+          </div>
+        </div>-->
+      </div>
+      <!-- -->
+      <div flex-container="row" flex-gutter="24">
+        <div flex-item>
+          <lx-date-picker model="TD.filter.desde" label="Tickets generados desde" locale="es"></lx-date-picker>
+        </div>
+        <div flex-item>
+          <lx-date-picker model="TD.filter.hasta" label="Tickets generados hasta" locale="es"></lx-date-picker>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog__actions">
+    <button class="btn btn--m btn--blue btn--flat" lx-ripple lx-dialog-close>Cancel</button>
+    <button class="btn btn--m btn--blue btn--flat" ng-hide="TD.show.ver" ng-click="Accion(TD.accion)" lx-ripple>Aceptar</button>
+  </div>
+</lx-dialog>

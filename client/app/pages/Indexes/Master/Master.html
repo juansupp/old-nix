@@ -1,0 +1,144 @@
+<div layout="row" layout-wrap>
+  <!-- -->
+  <div flex>
+    <md-card class="blue">
+      <md-content layout="row" layout-align="space-between center" layout-padding>
+        <div class="layout-column flex p++">
+          <h3 class="md-subhead">Tickets nuevos</h3>
+          <!--<p class="md-body-1">Ver detalles</p>-->
+        </div>
+        <div class="p++">
+          <h1>{{det.N}}</h1>
+          <!-- -->
+        </div>
+      </md-content>
+    </md-card>
+  </div>
+  <!-- -->
+  <div flex>
+    <md-card class="purple">
+      <md-content layout="row" layout-align="space-between center" layout-padding>
+        <div class="layout-column flex p++">
+          <h3 class="md-subhead">Tickets en proceso...</h3>
+          <!--p class="md-body-1">Ver detalles</p>-->
+        </div>
+        <div class="p++">
+          <h1>{{det.P}}</h1>
+          <!-- -->
+        </div>
+      </md-content>
+    </md-card>
+  </div>
+  <!-- -->
+  <div flex>
+    <md-card class="blue">
+      <md-content layout="row" layout-align="space-between center" layout-padding>
+        <div class="layout-column flex p++">
+          <h3 class="md-subhead">Tickets pendientes por cierre...</h3>
+          <!--<p class="md-body-1">Ver detalles</p>-->
+        </div>
+        <div class="p++">
+          <h1>{{det.V}}</h1>
+          <!-- -->
+        </div>
+      </md-content>
+    </md-card>
+  </div>
+</div>
+<div flex-container="row" class="p+">
+  <!-- SERVICIO -->
+  <div flex-item>
+    <lx-select ng-model="fil.sede" placeholder="Selecciona el cliente para filtrar las graficas" change="filterSede(newValue, oldValue)" choices="sel.sede" floating-label>
+      <lx-select-selected>
+        {{ $selected.nombre }}
+      </lx-select-selected>
+      <lx-select-choices>
+        {{ $choice.nombre }}
+      </lx-select-choices>
+    </lx-select>
+  </div>
+</div>
+<!--
+<div layout="row">
+  <div flex>
+    <md-card>
+      <md-content layout="row" layout-align="space-between center" layout-padding>
+        <div class="layout-column flex p++">
+          <h3 class="md-subhead">Total tickets creados</h3>
+          <p class="md-body-1">Selecciona un año y/o mes para filtrar</p>
+
+        </div>
+        <div class="p++">
+          <div layout="row">
+            <div flex>
+              <md-select placeholder="Año" ng-model="fil.TTG.year">
+                <md-option ng-repeat="y in sel.Years" ng-click='filterCreados()' value="{{y.numero_anio}}">{{y.numero_anio}}</md-option>
+              </md-select>
+            </div>
+            <div flex>
+              <md-select placeholder="Mes" ng-model="fil.TTG.month">
+                <md-option ng-repeat="m in sel.Months" ng-click='filterCreados(m.numero_mes)' value="{{m.numero_mes}}">{{m.nombre_mes}}</md-option>
+              </md-select>
+            </div>
+          </div>
+        </div>
+      </md-content>
+      <md-card-content>
+        <canvas id="line" class="chart chart-line" chart-data="MC.TTG.data" chart-labels="MC.TTG.labels" chart-series="MC.TTG.series" chart-click="MC.TTG.onClick">
+        </canvas>
+        <br>
+      </md-card-content>
+    </md-card>
+  </div>
+  <div flex>
+    <md-card>
+      <md-content layout="row" layout-align="space-between center" layout-padding>
+        <div class="layout-column flex p++">
+          <h3 class="md-subhead">Total tickets cerrados</h3>
+          <p class="md-body-1">Selecciona un año y/o mes para filtrar</p>
+        </div>
+        <div class="p++">
+          <div layout="row">
+            <div flex>
+              <md-select placeholder="Año" ng-model="fil.TCC.year">
+                <md-option ng-repeat="y in sel.Years" ng-click='filterCerrados()' value="{{y.numero_anio}}">{{y.numero_anio}}</md-option>
+              </md-select>
+            </div>
+            <div flex>
+              <md-select placeholder="Mes" ng-model="fil.TCC.month">
+                <md-option ng-repeat="m in sel.Months" ng-click='filterCerrados(m.numero_mes)' value="{{m.numero_mes}}">{{m.nombre_mes}}</md-option>
+              </md-select>
+            </div>
+          </div>
+        </div>
+      </md-content>
+      <md-card-content>
+        <canvas id="line" class="chart chart-line" chart-data="MC.TCC.data" chart-labels="MC.TCC.labels" chart-series="MC.TCC.series" chart-click="MC.TCC.onClick" chart-legend="true">
+        </canvas>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>
+
+<div layout="row">
+  <div flex>
+    <md-card>
+      <md-content layout="row" layout-align="space-between center" layout-padding>
+        <div class="layout-column flex p++">
+          <h3 class="md-subhead">Estado de ticket por tecnico</h3>
+          <p class="md-body-1">11/03/15 - 11/4/15</p>
+        </div>
+        <div class="p++">
+          <md-button aria-label="Open demo menu" ng-click="opendDialog('test')" class="md-icon-button">
+            <i class="fa fa-filter"></i>
+          </md-button>
+        </div>
+      </md-content>
+      <md-card-content>
+        <canvas id="line" class="chart chart-stacked-bar" chart-data="MC.CTET.data" chart-labels="MC.CTET.labels" chart-series="MC.CTET.series" chart-colours="MC.CTET.color" chart-legend="true" chart-click="MC.CTET.onClick">
+        </canvas>
+        <br>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>-->

@@ -1,0 +1,144 @@
+<div layout="row" flex class="mort">
+  <div layout="column" flex id="content">
+    <!--<md-toolbar  layout="row" class="ToolUp md-whiteframe-z2">
+      <div class="md-toolbar-tools">
+        <h2>
+          <span class="titulo">NIX 3.0</span>
+        </h2>
+        <span flex></span>
+        <md-button class="md-icon-button top" aria-label="More">
+          <i class="material-icons">settings</i>
+        </md-button>
+        <md-button class="md-icon-button top" aria-label="More2">
+          <i class="material-icons">power_settings_new</i>
+        </md-button>
+        <md-button class="md-icon-button top" aria-label="More3">
+          <i class="material-icons">face</i>
+        </md-button>
+      </div>
+    </md-toolbar>-->
+    <md-toolbar class="md-menu-toolbar md-whiteframe-1dp menu">
+
+      <div layout="row">
+        <md-menu-bar>
+          <md-menu>
+            <button ng-click="$mdOpenMenu()">
+              Ticket
+            </button>
+            <md-menu-content>
+              <md-menu-item class="md-indent">
+                <md-icon md-font-library="material-icons">add</md-icon>
+                <md-button ng-click="serf('m.newT')">
+                  Nuevo
+                </md-button>
+              </md-menu-item>
+              <md-menu-item class="md-indent">
+                <md-icon md-font-library="material-icons">content_paste</md-icon>
+                <md-button ng-click="serf('m.adminTicket')">
+                  Gestión
+                </md-button>
+              </md-menu-item>
+              <md-menu-item class="md-indent">
+                <md-icon md-font-library="material-icons">show_chart</md-icon>
+                <md-button ng-click="serf('m.adminTicket')">
+                  Reportes
+                </md-button>
+              </md-menu-item>
+              <md-menu-item class="md-indent">
+                <md-icon md-font-library="material-icons">pan_tool</md-icon>
+                <md-button ng-click="serf('m.solicitud')">
+                  Solicitar servicio
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+
+          <md-menu>
+            <button ng-click="$mdOpenMenu()">
+              Clientes
+            </button>
+            <md-menu-content>
+              <md-menu-item class="md-indent">
+                <md-icon md-font-library="material-icons">location_city</md-icon>
+                <md-button ng-click="serf('m.empresa')">
+                  Cliente
+                </md-button>
+              </md-menu-item>
+              <md-menu-item class="md-indent">
+                <md-icon md-font-library="material-icons">domain</md-icon>
+                <md-button ng-click="serf('m.sede')">
+                  Sede
+                </md-button>
+              </md-menu-item>
+              <md-menu-item class="md-indent">
+                <md-icon md-font-library="material-icons">group</md-icon>
+                <md-button ng-click="serf('m.area')">
+                  Area
+                </md-button>
+              </md-menu-item>
+              <md-menu-item class="md-indent">
+                <md-icon md-font-library="material-icons">person</md-icon>
+                <md-button ng-click="serf('m.contacto')">
+                  Contactos
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+
+          <md-menu>
+            <button ng-click="$mdOpenMenu()">
+              Usuarios
+            </button>
+            <md-menu-content>
+              <md-menu-item class="md-indent">
+                <md-icon md-font-library="material-icons">people</md-icon>
+                <md-button ng-click="serf('m.usuario')">
+                  Usuarios
+                </md-button>
+              </md-menu-item>
+              <md-menu-item class="md-indent">
+                <md-icon md-font-library="material-icons">assignment_ind</md-icon>
+                <md-button ng-click="serf('m.roles')">
+                  Roles y permisos
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+
+          <md-menu>
+            <button ng-click="$mdOpenMenu()">
+              Inventario
+            </button>
+            <md-menu-content>
+              <md-menu-item class="md-indent">
+                <md-icon md-font-library="material-icons">description</md-icon>
+                <md-button ng-click="serf('m.hojaActivo')">
+                  Hoja de vida
+                </md-button>
+              </md-menu-item>
+
+              <md-menu-item class="md-indent">
+                <md-icon md-font-library="material-icons">description</md-icon>
+                <md-button ng-click="serf('m.addActivo')">
+                  Agregar activo
+                </md-button>
+              </md-menu-item>
+
+              <md-menu-item class="md-indent">
+                <md-icon md-font-library="material-icons">reorder</md-icon>
+                <md-button ng-click="serf('m.adminInventario')">
+                  Gestión
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </md-menu-bar>
+      </div>
+    </md-toolbar>
+
+    <!--<md-progress-linear md-mode="indeterminate" class="md-warn" ng-if='cargar' value=""></md-progress-linear>-->
+    <md-content   style="overflow-x:hidden;    background-color: rgba(154, 154, 154, 0.09);" layout="column" flex layout-padding>
+      <div ui-view=""></div>
+    </md-content>
+  </div>
+</div>

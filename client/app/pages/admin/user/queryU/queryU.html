@@ -1,0 +1,76 @@
+<br>
+<span class="fs-headline display-block">Usuarios</span>
+<span class="fs-body-2 display-block">Presiona doble click en el usuario que quieras editar</span>
+<table dt-instance="dtInstance" datatable=""  dt-options="option" dt-columns="dtColumns" class="row-border hover">
+   <tfoot>
+     <tr>
+       <th></th>
+       <th></th>
+       <th></th>
+       <th></th>
+       <th></th>
+       <th></th>
+     </tr>
+   </tfoot>
+</table>
+<!-- EDICI{ON} -->
+<!-- Ediccion usuario-->
+<lx-dialog class="dialog dialog--l" id="dial" auto-close="true" >
+    <div class="dialog__header">
+        <div class="toolbar bgc-light-blue-500 pl++">
+            <span class="toolbar__label tc-white fs-title">
+                Editar {{QU.usuario.nombre}}
+            </span>
+            <div class="toolbar__right">
+                <button class="btn btn--l btn--white btn--icon" lx-tooltip="Guardar" lx-ripple ng-click="guardar()">
+                    <i class="mdi mdi-content-save"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="dialog__content p++">
+      <!--USuario -->
+      <div >
+        <div flex-container="row">
+            <div flex-item>
+                <lx-text-field label="Nombre" >
+                    <input type="text" ng-model="QU.usuario.nombre" >
+                </lx-text-field>
+            </div>
+            <div flex-item>
+                <lx-text-field label="Telefono" >
+                    <input type="text" ng-model="QU.usuario.telefono" >
+                </lx-text-field>
+            </div>
+            <div flex-item>
+                <lx-text-field label="Correo electronico" >
+                    <input type="text" ng-model="QU.usuario.correo" >
+                </lx-text-field>
+            </div>
+        </div>
+        <div flex-container="row">
+            <div flex-item>
+                <lx-text-field label="Nickname" >
+                    <input type="text" ng-model="QU.usuario.nickname"  >
+                </lx-text-field>
+            </div>
+            <div flex-item>
+                <lx-text-field label="Contraseña" >
+                    <input type="text" ng-model="QU.usuario.contrasena" >
+                </lx-text-field>
+            </div>
+            <div flex-item>
+                <!-- -->
+                <lx-select ng-model="QU.usuario.rol2" placeholder="Rol" choices="sRol" floating-label>
+                   <lx-select-selected>
+                       {{ $selected.nombre_rol }}
+                   </lx-select-selected>
+                   <lx-select-choices>
+                       {{ $choice.nombre_rol }}
+                   </lx-select-choices>
+               </lx-select>
+            </div>
+        </div>
+      </div>
+    </div>
+</lx-dialog>

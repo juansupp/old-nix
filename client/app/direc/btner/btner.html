@@ -1,0 +1,9 @@
+<md-button 
+	ng-if='icon'
+	ng-click="btnclick($event)"	
+  	class="md-icon-button md-mini" 
+  	aria-label="btneris">
+	    <i class="material-icons">{{icon}}</i>
+</md-button>
+
+<md-button ng-if='text' class="md-primary" style='width: 100%;'>{{text}}</md-button>

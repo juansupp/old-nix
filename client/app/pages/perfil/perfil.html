@@ -1,0 +1,63 @@
+<md-card>
+  <md-card-content>
+    <form id="fPerfil">
+      <div layout='row'>
+        <div flex>
+          <md-input-container class="md-block">
+            <label>Nombre</label>
+            <input required name="nombre" ng-model="PC.nombre">
+            <div ng-messages="fPerfil.nombre.$error">
+              <div ng-message="required">Campo requerido.</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div flex>
+          <md-input-container class="md-block">
+            <label>Correo</label>
+            <input type='email' required name="correo" ng-model="PC.correo">
+            <div ng-messages="fPerfil.correo.$error">
+              <div ng-message="required">Campo requerido.</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+      <div layout='row'>
+        <div flex>
+          <md-input-container class="md-block">
+            <label>Telefono</label>
+            <input type='number' required name="telefono" ng-model="PC.telefono">
+            <div ng-messages="fPerfil.telefono.$error">
+              <div ng-message="required">Campo requerido.</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div flex>
+          <md-input-container class="md-block">
+            <label>Nickname (nombre de usuario)</label>
+            <input required name="nick" ng-model="UC.nickname">
+            <div ng-messages="fPerfil.nick.$error">
+              <div ng-message="required">Campo requerido.</div>
+            </div>
+          </md-input-container>
+        </div>
+      </div>
+      <div layout='row'>
+        <div flex>
+          <md-input-container class="md-block">
+            <label>Contraseña</label>
+            <input type='password' ng-model="UC.contrasena">
+          </md-input-container>
+        </div>
+        <div flex>
+          <md-input-container class="md-block">
+            <label>Contraseña de nuevo</label>
+            <input type='password' ng-model="UC.contrasena2">
+          </md-input-container>
+        </div>
+      </div>
+      <div layout='row'>
+        <md-button ng-click='guardarPerfil()' class="md-primary">Guardar</md-button>
+      </div>
+    </form>
+  </md-card-content>
+</md-card>

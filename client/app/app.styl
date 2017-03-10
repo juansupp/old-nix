@@ -1,0 +1,99 @@
+@import "../bower_components/font-awesome/css/font-awesome.css"
+
+//
+// Font Awesome Fonts
+//
+
+@font-face
+  font-family: 'FontAwesome'
+  src: url('../bower_components/font-awesome/fonts/fontawesome-webfont.eot?v=4.1.0')
+  src: url('../bower_components/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'),
+  url('../bower_components/font-awesome/fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'),
+  url('../bower_components/font-awesome/fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'),
+  url('../bower_components/font-awesome/fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+  font-weight: normal
+  font-style: normal
+
+//
+// App-wide Styles
+//
+
+.md-icon
+  margin: auto;
+  background-repeat: no-repeat no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentColor;
+  height: 24px;
+  width: 24px;
+  min-height: 24px;
+  min-width: 24px;
+
+
+//
+
+
+.md-body-1 {
+    opacity: .5;
+}
+
+md-dialog {
+  overflow: inherit!important;
+}
+
+
+primary-color =  white
+primary-back = rgb(0, 188, 212)
+
+btner {
+  color: primary-back;
+  font-size: 2px!important;
+}
+
+
+md-input-container {
+  display: block!important;
+}
+
+*:focus {outline:none}
+
+.text_filter,.number_filter,.select_filter
+  border: none;
+  transition: all 0.3s cubic-bezier(.64,.09,.08,1);
+  background-position: -200px 0;
+  background-repeat: no-repeat;
+  color: darken(#ddd, 20%);
+  width 100%
+  font-size: 0.90rem
+
+
+
+// Component styles are injected through grunt
+/* inject:styl */
+@import 'direc/tabler/tabler.styl';
+@import 'pages/Indexes/Master/Master.styl';
+@import 'pages/Indexes/Tech/Tech.styl';
+@import 'pages/Indexes/admin/admin.styl';
+@import 'pages/Indexes/client/client.styl';
+@import 'pages/admin/customers/addC/addC.styl';
+@import 'pages/admin/customers/mc/mc.styl';
+@import 'pages/admin/customers/queryC/queryC.styl';
+@import 'pages/admin/user/addU/addU.styl';
+@import 'pages/admin/user/mu/mu.styl';
+@import 'pages/admin/user/queryU/queryU.styl';
+@import 'pages/config/confInventario/confInventario.styl';
+@import 'pages/config/confTicket/confTicket.styl';
+@import 'pages/config/confUser/confUser.styl';
+@import 'pages/config/mconf/mconf.styl';
+@import 'pages/inventario/addActivo/addActivo.styl';
+@import 'pages/inventario/adminInventario/adminInventario.styl';
+@import 'pages/inventario/hojaVida/hojaVida.styl';
+@import 'pages/login/login.styl';
+@import 'pages/menu/menu.styl';
+@import 'pages/perfil/perfil.styl';
+@import 'pages/ticket/adminT/adminT.styl';
+@import 'pages/ticket/adminTicket/adminTicket.styl';
+@import 'pages/ticket/newT/newT.styl';
+@import 'pages/ticket/newTicket/newTicket.styl';
+@import 'pages/ticket/solicitud/solicitud.styl';
+/* endinject */

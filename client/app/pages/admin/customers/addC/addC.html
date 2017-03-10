@@ -1,0 +1,139 @@
+<br>
+<!-- //////////////////// /////////////////////////////////////////// // 1.Cliente CHECKEO CLIENTE EXISTENTE O NUEVO -->
+<div flex-item >
+  <span class="fs-title display-block">1. Selecciona o registra el cliente.</span>
+</div>
+<div  flex-container="row" flex-gutter="24 m+">
+  <div flex-item="4">
+    <div class="checkbox mt+">
+      <input ng-model="AC.ch.cliente" type="checkbox" id="checkbox2" class="checkbox__input" >
+      <label for="checkbox2" class="checkbox__label">Cliente nuevo</label>
+      <span class="checkbox__help">En caso que quieras gestionar la información de un cliente nuevo.</span>
+    </div>
+  </div>
+
+  <!-- DROP CLIENTE EXISTENTE -->
+  <div ng-show="!nuevo.cliente" flex-item>
+    <lx-select ng-model="AC.cliente" placeholder="Selecciona el cliente" change="clienteS(newValue,oldValue)" choices="sel.cliente" floating-label>
+        <lx-select-selected>
+            {{ $selected.nombre}}
+        </lx-select-selected>
+
+        <lx-select-choices>
+            {{ $choice.nombre }}
+        </lx-select-choices>
+    </lx-select>
+  </div>
+</div
+<!-- FORM CLIENTE NUEVO  -->
+<div ng-show="nuevo.cliente" flex-container="row" flex-gutter="24">
+  <div flex-item >
+    <lx-text-field label="Cliente">
+      <input type="text" ng-model="AC.cliente.nombre">
+    </lx-text-field>
+  </div>
+  <div flex-item >
+    <lx-text-field label="NIT">
+      <input type="text" ng-model="AC.cliente.NIT">
+    </lx-text-field>
+  </div>
+  <div flex-item="1">
+    <button class="btn btn--xl btn--blue btn--icon m+" ng-click="newCustomer()" lx-ripple><i class="mdi mdi-plus"></i></button>
+  </div>
+</div>
+
+
+<!--///////////////////////////////////////////////////////////////////// 2. SEDE DEPENDE DE CLIENTE-->
+<!--  -->
+<div ng-if="paso.sede">
+  <!-- paso -->
+  <div flex-item class="">
+    <span class="fs-title display-block">2. Selecciona o registra la sede.</span>
+  </div>
+
+  <div  flex-container="row" flex-gutter="24 m+">
+    <div flex-item="4">
+      <div class="checkbox mt+">
+        <input ng-model="AC.ch.sede" type="checkbox" id="checkbox3" class="checkbox__input" >
+        <label for="checkbox3" class="checkbox__label">Sede nueva</label>
+        <span class="checkbox__help">En caso que quieras gestionar la información de una sede nueva.</span>
+      </div>
+    </div>
+
+    <!-- DROP Sede EXISTENTE -->
+    <div  flex-item ng-show="!nuevo.sede">
+      <lx-select ng-model="AC.sede" placeholder="Selecciona el cliente" change="sedeS(newValue,oldValue)" choices="sel.sede" floating-label>
+          <lx-select-selected>
+              {{ $selected.nombre_sede}}
+          </lx-select-selected>
+
+          <lx-select-choices>
+              {{ $choice.nombre_sede }}
+          </lx-select-choices>
+      </lx-select>
+    </div>
+  </div>
+  <!-- FORM SEDE NUEVA -->
+  <div flex-container="row" flex-gutter="24" ng-show="nuevo.sede">
+    <div flex-item >
+      <lx-text-field label="Sede">
+        <input type="text" ng-model="AC.sede.nombre_sede">
+      </lx-text-field>
+    </div>
+    <div flex-item >
+      <lx-text-field label="Dirección">
+        <input type="text" ng-model="AC.sede.direccion">
+      </lx-text-field>
+    </div>
+    <div flex-item >
+      <lx-text-field label="Telefono">
+        <input type="text" ng-model="AC.sede.telefono">
+      </lx-text-field>
+    </div>
+    <div flex-item="1">
+      <button class="btn btn--xl btn--blue btn--icon m+" ng-click="newSede()" lx-ripple><i class="mdi mdi-plus"></i></button>
+    </div>
+  </div>
+</div>
+
+<div ng-if="paso.contact">
+  <!--  3 CONTACTO DEPENDE DE SEDE -->
+  <div flex-item class="">
+    <span class="fs-title display-block">3. Registra el contacto.</span>
+  </div>
+  <div flex-container="row" flex-gutter="24">
+    <div flex-item>
+      <lx-text-field label="Nombre contacto ">
+        <input type="text" ng-model="AC.contacto.nombre">
+      </lx-text-field>
+    </div>
+    <div flex-item>
+      <lx-text-field label="Correo contacto">
+        <input type="text" ng-model="AC.contacto.correo">
+      </lx-text-field>
+    </div>
+    <div flex-item="1">
+      <button class="btn btn--xl btn--blue btn--icon m+" ng-click="newContact()" lx-ripple><i class="mdi mdi-plus"></i></button>
+    </div>
+  </div>
+  <div flex-item class="">
+    <span class="fs-title display-block">4. Registra un area.</span>
+  </div>
+  <!-- 4. Area a sede depende de sede -->
+  <div flex-container="row" flex-gutter="24">
+    <div flex-item>
+      <lx-select ng-model="AC.area" placeholder="Selecciona el cliente" change="areaS(newValue,oldValue)"  choices="sel.area" floating-label>
+          <lx-select-selected>
+              {{ $selected.nombre_area}}
+          </lx-select-selected>
+
+          <lx-select-choices>
+              {{ $choice.nombre_area}}
+          </lx-select-choices>
+      </lx-select>
+    </div>
+    <div flex-item="1">
+      <button class="btn btn--xl btn--blue btn--icon m+" ng-click="newArea()" lx-ripple><i class="mdi mdi-plus"></i></button>
+    </div>
+  </div>
+</div>

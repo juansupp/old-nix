@@ -1,0 +1,155 @@
+<!--<selecter model='algo' table='servicio' title = 'Servicio' attr='nombre_servicio' />-->
+<div layout='row' layout-align="center center">
+  <md-card flex='70' flex-xs='100' flex-md='100' flex-xs='100' flex-sm='100'>
+    <md-content layout="ow" layout-align="space-between center" layout-padding>
+      <div class="layout-column flex p++">
+        <h3 class="md-subhead">Nuevo ticket</h3>
+        <p class="md-body-1">Selecciona el tiop de ticket que se realizará</p>
+      </div>
+    </md-content>
+    <md-card-content layout='column' class="p++">
+      <md-radio-group ng-model="vmnt.tipoTicket">
+        <div layout='row' flex>
+          <div flex>
+            <md-radio-button value="servicio">Servicio común</md-radio-button>
+          </div>
+          <div flex>
+            <md-radio-button value="entrega"> Entrega de activo(s)</md-radio-button>
+          </div>
+          <div flex>
+            <md-radio-button value="retiro">Retiro de activo(s)</md-radio-button>
+          </div>
+        </div>
+      </md-radio-group>
+
+      <div layout='row'>
+        <div flex>
+          <md-input-container>
+            <label>Descripción</label>
+            <textarea ng-model="vmnt.form.descripcion"></textarea>
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout='row' ng-hide="vmnt.tipoTicket !== 'servicio' ">
+        <div flex>
+          <md-input-container>
+            <selecter model='vmnt.form.servicio' table='servicio' title='Tipo de servicio' attr='nombre_servicio' />
+          </md-input-container>
+        </div>
+        <div flex>
+          <md-input-container>
+            <selecter model='vmnt.form.mesa' table='mesa' title='Mesa de servicio' attr='mesa' />
+          </md-input-container>
+        </div>
+        <div flex>
+          <md-input-container>
+            <selecter model='vmnt.form.origen' table='origen' title='Origen' attr='atencion' />
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout='row'>
+        <div flex ng-hide="vmnt.tipoTicket !== 'servicio' ">
+          <md-input-container>
+            <selecter model='vmnt.form.prioridad' table='prioridad' title='Prioridad' attr='nivel' />
+          </md-input-container>
+        </div>
+        <div flex class="p+ pt0">
+          <lx-date-picker ng-model="vmnt.form.fecha" lx-input-format="LL" lx-locale="es" style="    padding-top: 21px;">
+            <lx-text-field lx-allow-clear="true" lx-label="Fecha de atención">
+              <input type="text" ng-model="vmnt.form.fechaF">
+            </lx-text-field>
+          </lx-date-picker>
+        </div>
+      </div>
+
+      <div layout='row'>
+        <div flex='50'>
+          <md-input-container>
+            <selecter model='vmnt.form.cliente' table='cliente' title='Cliente' attr='nombre' change='vmnt.loadAreaAndContact()' />
+          </md-input-container>
+        </div>
+        <div flex>
+          <md-input-container>
+            <selecter title='Area' model='vmnt.form.area' table='area' attr='nombre_area' table='area' filter='vmnt.form.cliente.id_sede' wait='true' />
+          </md-input-container>
+        </div>
+        <div flex>
+          <md-input-container>
+            <selecter title='Usuario final' model='vmnt.form.contacto' attr='nombre_contacto' table='contacto' filter='vmnt.form.cliente.id_sede' wait='true' />
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout='row'>
+        <div flex>
+          <md-input-container>
+            <selecter model='vmnt.form.persona' table='tecnico' title='Tecnico encargado' attr='nombre' />
+          </md-input-container>
+        </div>
+      </div>
+
+      <div layout='row'>
+        <div flex>
+
+        </div>
+        <div flex align='right'>
+          <md-input-container>
+            <md-button class="md-primary" ng-click='vmnt.confirmar()'>Continuar</md-button>
+          </md-input-container>
+        </div>
+      </div>
+
+    </md-card-content>
+  </md-card>
+</div>
+
+<!--ACTIVOS-->
+<div layout='row' layout-align="center center">
+  <md-card flex='70' flex-xs='100' flex-md='100' flex-xs='100' flex-sm='100'>
+    <md-content layout="ow" layout-align="space-between center" layout-padding>
+      <div class="layout-column flex p++">
+        <h3 class="md-subhead">Activos</h3>
+        <p class="md-body-1">Arrastra el/los activos que se van a entregtar</p>
+      </div>
+    </md-content>
+    <md-card-content layout='column' class="p++">
+      <md-content layout='row' layout-padding>
+        <div flex>
+          <md-input-container>
+            <label>Buscar activo (placa de inventario, seguridad, serial, marca, etc...)</label>
+            <input type='text' ng-model="vmnt.filter.descripcion"/>
+          </md-input-container>
+        </div>
+      </md-content>
+      <md-content layout='row' class="borde" >
+        <div  flex>
+          <md-list  dnd-list="vmnt.activos.de"  class="borde rape">
+            <md-subheader class="md-no-sticky">3 line item (dense)</md-subheader>
+            <md-list-item class="md-3-line" ng-repeat="item in vmnt.activos.de" dnd-draggable="item" dnd-moved="vmnt.activos.de.splice($index, 1)" dnd-effect-allowed="move">
+              <div class="md-list-item-text" layout="column">
+                <h3>{{ item.label }}</h3>
+                <h4>{{ item.label }}</h4>
+                <p>{{ item.label }}</p>
+              </div>
+            </md-list-item>
+          </md-list>
+        </div>
+        <div  flex>
+          <md-list  dnd-list="vmnt.activos.para"  class="borde rape">
+            <md-subheader class="md-no-sticky">3 line item (dense)</md-subheader>
+            <md-list-item class="md-3-line" ng-repeat="item in vmnt.activos.para" dnd-draggable="item" dnd-moved="vmnt.activos.para.splice($index, 1)" dnd-effect-allowed="move">
+              <div class="md-list-item-text" layout="column">
+                <h3>{{ item.label }}</h3>
+                <h4>{{ item.label }}</h4>
+                <p>{{ item.label }}</p>
+              </div>
+            </md-list-item>
+          </md-list>
+        </div>
+      </md-content>
+
+    </md-card-content>
+  </md-card>
+</div>
